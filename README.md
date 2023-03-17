@@ -26,7 +26,7 @@ The MIA-3DCNN network is a 3D convolutional neural network, which is the method 
 Firstly, the neural network contains a number of stacked blocks composed of 3D convolutional layers, followed by a 3D max pooling layer, a batch normalization layer, and a dropout layer. After these initial blocks, we stacked a 3D global average pooling layer, followed by a couple of dense layers, each of them followed by a dropout layer. At last, there is a 2-neuron layer, for the classification.
 
 ### Data augmentation
-The operations of data augmentation used were: additive gaussian noise, Gaussian blur, rotation, flip (vertical and horizontal), cutout and gamma contrast.
+The operations of data augmentation used were: additive Gaussian noise, Gaussian blur, rotation, flip (vertical and horizontal), cutout and gamma contrast.
  
 ### Versions
 We provided two results to the competition, one from a model trained with data augmentation (version A) and another model trained without data augmentation (version B). In both versions, the model architecture is the same.
