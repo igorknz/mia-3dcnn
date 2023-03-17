@@ -17,22 +17,22 @@ The dataset provided for training and validation was divided according to the ta
 Each sample corresponded to a directory containing slices of a CT scan from a patient. Each one of these folders contained a varying number of images, ranging from 50 to 700.
 
 ## Data processing
-Due to the size of dataset that had to be used and our hardware limitations, the images had to be processed before training. We used a spline interpolation to reduce all images to 224 by 224, and to make all sample folders have 64 images.
+Due to the size of dataset that had to be used and our hardware limitations, the images had to be processed before training. We used a spline interpolation to reduce all images to 224x224 pixels, and to make all sample folders have 64 images.
 
 ## Our method
 The MIA-3DCNN network is a 3D convolutional neural network, which is the method chosen to be used in the detection task. Due to the limited amount of samples, we used data augmentation to have more (and more diverse) samples.
 
 ### Convolutional neural network
-Firstly, the neural network contains a number of stacked blocks composed of 3D convolutional layers, followed by 3D max pooling layer, a batch normalization layer, and a dropout layer. After these initial blocks, we stacked a 3D global average pooling layer, followed by a couple of dense layers, each of them followed by a dropout layer. At last, there is a 2-neuron layer, for the classification.
+Firstly, the neural network contains a number of stacked blocks composed of 3D convolutional layers, followed by a 3D max pooling layer, a batch normalization layer, and a dropout layer. After these initial blocks, we stacked a 3D global average pooling layer, followed by a couple of dense layers, each of them followed by a dropout layer. At last, there is a 2-neuron layer, for the classification.
 
 ### Data augmentation
-The operations of data augmentation used were: additive gaussian noise, gaussian blur, rotation, flip (vertical and horizontal), cutout and gamma contrast.
+The operations of data augmentation used were: additive gaussian noise, Gaussian blur, rotation, flip (vertical and horizontal), cutout and gamma contrast.
  
 ### Versions
 We provided two results to the competition, one from a model trained with data augmentation (version A) and another model trained without data augmentation (version B). In both versions, the model architecture is the same.
  
 ## Code usage
-1. The data provided for the challenge has to already have been downloaded, unzipped, and organized in the correct folders.
+1. The data provided for the challenge should already have been downloaded, unzipped, and organized into the correct folders.
  
  ```
  train
@@ -58,7 +58,7 @@ We provided two results to the competition, one from a model trained with data a
           ...
  ```
  
-2. Run <code>preprocess_images.py</code>. Initially, all the original images will be renamed to xxxx.png, where xxxx is the number of the original image, preceded by zeros, so that the name of the image if formed by 4 algarisms. Then, all the images are resized to 224 by 224, and all samples folders will have 64 images. 
+2. Run <code>preprocess_images.py</code>. Initially, all the original images will be renamed to xxxx.png, where xxxx is the number of the original image, preceded by zeros, so that the name of the image is formed by 4 algarisms. Then, all the images are resized to 224x224 pixels, and all samples folders will have 64 images. 
 
 3. Run <code>train_mia_9a.py</code> to run the whole training pipeline. Make sure to supply the correct inputs to the parser.
 
